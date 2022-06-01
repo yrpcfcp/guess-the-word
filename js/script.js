@@ -8,6 +8,7 @@ const spanParagraph = document.querySelector ("span");
 const guesses = document.querySelector (".guessed-letters");
 const playAgain = document.querySelector(".play-again-hide");
 const word = "magnolia";
+const guessedLetters = [];
 
 
 const hiddenWord = function (word){
@@ -25,9 +26,32 @@ guessButton.addEventListener("click", function(e){
     const captureWord = letter.value;
     console.log(captureWord);
     letter.value = "";
+    guess(input);
 })
 
 hiddenWord(word)
+
+
+const guess = function(){
+  const acceptedLetter = /[a-zA-Z]/
+  if (guess.match === " "){
+      console.log("You need to insert one character (A to Z)"){
+  } if(guess.match >= 1){
+    console.log("Please insert ")
+  }
+   if (guess.macth === guesses)){
+      console.log ("Yay!")
+  }
+
+  }
+}
+
+
+const makeGuess = function(){
+    
+
+}
+
 
 
 

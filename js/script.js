@@ -26,31 +26,34 @@ guessButton.addEventListener("click", function(e){
     const captureWord = letter.value;
     console.log(captureWord);
     letter.value = "";
-    guess(input);
+    guess(e);
 })
 
 hiddenWord(word)
 
 
-const guess = function(){
+const guess = function(input){
   const acceptedLetter = /[a-zA-Z]/
-  if (guess.match === " "){
-      console.log("You need to insert one character (A to Z)"){
-  } if(guess.match >= 1){
+  if (input.match === " "){
+      console.log("You need to insert one character (A to Z)")}
+  else if(input.match >= 1){
     console.log("Please insert ")
   }
-   if (guess.macth === guesses)){
+   if (input.match === guesses){
       console.log ("Yay!")
   }
+  const makeGuess = function(){
+    guessedLetters = guessedLetters.to.uppercase();
+    guessedLetters.push(e);
+      
+  
+  }
+  
 
   }
-}
 
 
-const makeGuess = function(){
-    
 
-}
 
 
 

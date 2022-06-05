@@ -55,13 +55,13 @@ const validateInput = function (input) {
   const acceptedLetter = /[a-zA-Z]/;
   if (input.length === 0) {
     // Is the input empty?
-    message.innerText = "Please enter a letter.";
+    message.innerText = "Insira uma letra";
   } else if (input.length > 1) {
     // Did you type more than one letter?
-    message.innerText = "Please enter a single letter.";
+    message.innerText = "Coloque apenas uma letra por vez.";
   } else if (!input.match(acceptedLetter)) {
     // Did you type a number, a special character or some other non letter thing?
-    message.innerText = "Please enter a letter from A to Z.";
+    message.innerText = "Coloque uma letra de A a Z";
   } else {
     // We finally got a single letter, omg yay
     return input;
@@ -71,7 +71,7 @@ const validateInput = function (input) {
 const makeGuess = function (guess) {
   guess = guess.toUpperCase();
   if (guessedLetters.includes(guess)) {
-    message.innerText = "You already guessed that letter, silly. Try again.";
+    message.innerText = "Essa já foi. Tente novamente.";
   } else {
     guessedLetters.push(guess);
     console.log(guessedLetters);
@@ -108,17 +108,17 @@ const updateWordInProgress = function (guessedLetters) {
 };
 
 function playSoundYes () {
-  const yes = new Audio("media/yes.mp3");;
+  const yes = new Audio("../media/yes.mp3");;
   yes.play();
 }
 
 function playSoundNo () {
-  const no = new Audio("media/no.mp3");;
+  const no = new Audio("../media/no.mp3");;
   no.play();
 }
 
 function playSoundWin () {
-  const win = new Audio("media/win.mp3");;
+  const win = new Audio("../media/win.mp3");;
   win.play();
 }
 
@@ -131,18 +131,18 @@ const updateGuessesRemaining = function (guess) {
   
   if (!upperWord.includes(guess)) {
     // womp womp - bad guess, lose a chance
-    message.innerText = `Sorry, the word has no ${guess}.`;
+    message.innerText = `A palavra não possui a letra ${guess}.`;
     playSoundNo()
     remainingGuesses -= 1;
     } else {
-    message.innerText = `Good guess! The word has the letter ${guess}.`;
+    message.innerText = `Boa! A palavra possui ${guess}.`;
     playSoundYes()
   }
 
   
 
   if (remainingGuesses === 0) {
-    message.innerHTML = `Game over! The word was <span class="highlight">${word}</span>.`;
+    message.innerHTML = `Game over! A palavra era <span class="highlight">${word}</span>.`;
     startOver();
   } else if (remainingGuesses === 1) {
     remainingGuessesSpan.innerText = `${remainingGuesses} guess`;
@@ -154,7 +154,7 @@ const updateGuessesRemaining = function (guess) {
 const checkIfWin = function () {
   if (word.toUpperCase() === wordInProgress.innerText) {
     message.classList.add("win");
-    message.innerHTML = `<p class="highlight">You guessed the correct word! Congrats!</p>`;
+    message.innerHTML = `<p class="highlight">Você acertou! Duas palavras para o campeão: PARA BÉNS!</p>`;
     message.style.color = "black"; 
     playSoundWin ()
     startOver();

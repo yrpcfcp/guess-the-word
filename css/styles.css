@@ -22,12 +22,13 @@ body {
 .logo {
   width: 70%;
   max-width: 484px;
+  margin: -45px 0 0 0;
 }
 
 h1 {
   width: 100%;
   padding-top: 1em;
-  margin: 0;
+  margin: 20px 0 0 0;
   font-family: "Unlock", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -63,6 +64,7 @@ h1 {
   letter-spacing: 15px;
   color: #ffffff;
   font-size: 30px;
+  margin: 10px 0 0 0;
 }
 
 .guessed-letters {

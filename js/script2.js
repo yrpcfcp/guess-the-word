@@ -13,7 +13,7 @@ const guessedLetters = [];
 let remainingGuesses = 10;
 
 const getWord = async function () {
-  const response = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
+  const response = await fetch ("https://gist.githubusercontent.com/yrpcfcp/0f119066ab7a2fc5ed9fb80bc8cb6733/raw/276175284aaa4f7f27bcba5026b6470164e1c6bd/br-sem-acentos.txt")
   const words = await response.text();
   const wordArray = words.split("\n");
   const randomIndex = Math.floor(Math.random() * wordArray.length);
@@ -177,7 +177,7 @@ playAgainButton.addEventListener("click", function () {
   message.classList.remove("win");
   guessedLetters = [];
   remainingGuesses = 8;
-  remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
+  remainingGuessesSpan.innerText = `${remainingGuesses} palpites`;
   guessedLettersElement.innerHTML = "";
   message.innerText = "";
   // Grab a new word

@@ -7,6 +7,7 @@ const remainingGuessesElement = document.querySelector(".remaining");
 const remainingGuessesSpan = document.querySelector(".remaining span");
 const message = document.querySelector(".message");
 const playAgainButton = document.querySelector(".play-again");
+const restart = document.querySelector(".restart")
 
 let word = "magnolia";
 const guessedLetters = [];
@@ -23,9 +24,8 @@ const getWord = async function () {
 
 
 
-// Fire off the game
+
 getWord();
-// Display our symbols as placeholders for the chosen word's letters
 const placeholder = function (word) {
   const placeholderLetters = [];
   for (const letter of word) {
@@ -37,15 +37,11 @@ const placeholder = function (word) {
 
 guessLetterButton.addEventListener("click", function (e) {
   e.preventDefault();
-  // Empty message paragraph
-  message.innerText = "";
-  // Let's grab what was entered in the input
-  const guess = letterInput.value;
-  // Let's make sure that it is a single letter
-  const goodGuess = validateInput(guess);
+   message.innerText = "";
+   const guess = letterInput.value;
+   const goodGuess = validateInput(guess);
 
   if (goodGuess) {
-    // We've got a letter! Let's guess!
     makeGuess(guess);
   }
   letterInput.value = "";
@@ -54,16 +50,12 @@ guessLetterButton.addEventListener("click", function (e) {
 const validateInput = function (input) {
   const acceptedLetter = /[a-zA-Z]/;
   if (input.length === 0) {
-    // Is the input empty?
     message.innerText = "Insira uma letra";
   } else if (input.length > 1) {
-    // Did you type more than one letter?
     message.innerText = "Coloque apenas uma letra por vez.";
   } else if (!input.match(acceptedLetter)) {
-    // Did you type a number, a special character or some other non letter thing?
     message.innerText = "Coloque uma letra de A a Z";
   } else {
-    // We finally got a single letter, omg yay
     return input;
   }
 };
@@ -82,7 +74,6 @@ const makeGuess = function (guess) {
 };
 
 const showGuessedLetters = function () {
-  // Clear the list first
   guessedLettersElement.innerHTML = "";
   for (const letter of guessedLetters) {
     const li = document.createElement("li");
@@ -130,7 +121,6 @@ const updateGuessesRemaining = function (guess) {
   const upperWord = word.toUpperCase();
   
   if (!upperWord.includes(guess)) {
-    // womp womp - bad guess, lose a chance
     message.innerText = `A palavra não possui a letra ${guess}.`;
     playSoundNo()
     remainingGuesses -= 1;
@@ -145,9 +135,9 @@ const updateGuessesRemaining = function (guess) {
     message.innerHTML = `Game over! A palavra era <span class="highlight">${word}</span>.`;
     startOver();
   } else if (remainingGuesses === 1) {
-    remainingGuessesSpan.innerText = `${remainingGuesses} guess`;
+    remainingGuessesSpan.innerText = `${remainingGuesses} palpite`;
   } else {
-    remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
+    remainingGuessesSpan.innerText = `${remainingGuesses} palpites`;
   }
 };
 
@@ -156,34 +146,42 @@ const checkIfWin = function () {
     message.classList.add("win");
     message.innerHTML = `<p class="highlight">Você acertou! Duas palavras para o campeão: PARA BÉNS!</p>`;
     message.style.color = "black"; 
-    playSoundWin ()
-    startOver();
+    playSoundWin()
     
   
-    
   }
-  
+
 }
 
-const startOver = function () {
-  guessLetterButton.classList.add("hide");
-  remainingGuessesElement.classList.add("hide");
-  guessedLettersElement.classList.add("hide");
-  playAgainButton.classList.remove("hide");
-};
+restart.addEventListener("click", function(){
+  window.location.reload() 
+})
+
+// const startOver = function () {
+//   window.location.reload();
+// };
+
+
+
+
+
+
+
+ // guessLetterButton.classList.add("hide");
+ // remainingGuessesElement.classList.add("hide");
+ // guessedLettersElement.classList.add("hide");
+ // playAgainButton.classList.remove("hide");
+
 
 playAgainButton.addEventListener("click", function () {
-  // reset all original values - grab new word
   message.classList.remove("win");
   guessedLetters = [];
   remainingGuesses = 8;
   remainingGuessesSpan.innerText = `${remainingGuesses} palpites`;
   guessedLettersElement.innerHTML = "";
   message.innerText = "";
-  // Grab a new word
   getWord();
 
-  // show the right UI elements
   guessLetterButton.classList.remove("hide");
   playAgainButton.classList.add("hide");
   remainingGuessesElement.classList.remove("hide");

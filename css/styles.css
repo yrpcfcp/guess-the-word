@@ -110,7 +110,7 @@ input:focus {
 }
 
 .guess,
-.play-again {
+.restart {
   padding: 1em 3em;
   border-radius: 30px;
   margin-top: 1em;

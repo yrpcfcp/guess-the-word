@@ -6,7 +6,7 @@ const wordInProgress = document.querySelector(".word-in-progress");
 const remainingGuessesElement = document.querySelector(".remaining");
 const remainingGuessesSpan = document.querySelector(".remaining span");
 const message = document.querySelector(".message");
-const playAgainButton = document.querySelector(".play-again");
+const restart = document.querySelector(".restart")
 
 let word = "magnolia";
 const guessedLetters = [];
@@ -150,20 +150,19 @@ const checkIfWin = function () {
     message.innerHTML = `<p class="highlight">You guessed the correct word! Congrats!</p>`;
     message.style.color = "black"; 
     playSoundWin ()
-    startOver();
-    
-  
-    
   }
-  
+
 }
 
-const startOver = function () {
-  guessLetterButton.classList.add("hide");
-  remainingGuessesElement.classList.add("hide");
-  guessedLettersElement.classList.add("hide");
-  playAgainButton.classList.remove("hide");
-};
+restart.addEventListener("click", function(){
+  window.location.reload() 
+})
+
+  // guessLetterButton.classList.add("hide");
+  // remainingGuessesElement.classList.add("hide");
+  // guessedLettersElement.classList.add("hide");
+  // playAgainButton.classList.remove("hide");
+
 
 playAgainButton.addEventListener("click", function () {
   message.classList.remove("win");

@@ -133,7 +133,7 @@ const updateGuessesRemaining = function (guess) {
 
   if (remainingGuesses === 0) {
     message.innerHTML = `Game over! A palavra era <span class="highlight">${word}</span>.`;
-    startOver();
+    // startOver();
   } else if (remainingGuesses === 1) {
     remainingGuessesSpan.innerText = `${remainingGuesses} palpite`;
   } else {
@@ -157,20 +157,6 @@ restart.addEventListener("click", function(){
   window.location.reload() 
 })
 
-// const startOver = function () {
-//   window.location.reload();
-// };
-
-
-
-
-
-
-
- // guessLetterButton.classList.add("hide");
- // remainingGuessesElement.classList.add("hide");
- // guessedLettersElement.classList.add("hide");
- // playAgainButton.classList.remove("hide");
 
 
 playAgainButton.addEventListener("click", function () {

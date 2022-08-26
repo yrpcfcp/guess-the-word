@@ -138,9 +138,9 @@ const updateGuessesRemaining = function (guess) {
     message.innerHTML = `Game over! The word was <span class="highlight">${word}</span>.`;
     // startOver();
   } else if (remainingGuesses === 1) {
-    remainingGuessesSpan.innerText = `${remainingGuesses} palpite`;
+    remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
   } else {
-    remainingGuessesSpan.innerText = `${remainingGuesses} palpites`;
+    remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
   }
 };
 
